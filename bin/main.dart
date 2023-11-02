@@ -15,8 +15,8 @@ void main(List<String> arguments) async {
       );
     }
 
-    List<Map<String, String>> decodeData() {
-      List<dynamic> decodedJson = jsonDecode(packageResponse.body);
+    List<Map<String, String>> decodeData(http.Response res) {
+      List<dynamic> decodedJson = jsonDecode(res.body);
 
       List<Map<String, dynamic>> decodedJsonMaps =
           List<Map<String, dynamic>>.from(decodedJson);
@@ -43,7 +43,7 @@ void main(List<String> arguments) async {
       }
     }
 
-    output(decodeData());
+    output(decodeData(packageResponse));
   } catch (e) {
     print(e);
   }
